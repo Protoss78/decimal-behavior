@@ -40,3 +40,32 @@ Inlude the behavior in your web component
       </script>
     </dom-module>
 
+## Methods
+### round(value, exp)
+Decimal adjustment of a number using the round method.
+* value: The number to be adjusted
+* exp: The exponent (the 10 logarithm of the adjustment base). -1 = round to 1 decimal
+ 
+### floor(value, exp)
+Decimal adjustment of a number using the floor method.
+* value: The number to be adjusted
+* exp: The exponent (the 10 logarithm of the adjustment base). -1 = round to 1 decimal
+
+### ceil(value, exp)
+Decimal adjustment of a number using the ceil method.
+* value: The number to be adjusted
+* exp: The exponent (the 10 logarithm of the adjustment base). -1 = round to 1 decimal
+
+### formatNumber(value, decimals, type)
+Adjusts and formats the passed value to the specified number of decimals using the passed adjustment type. 
+The toFixed function is used to  cut off the String representation.
+* value: The number to be adjusted
+* decimals: The number of decimals (is converted into an exponent). Example 1 = 1 decimal position
+* type: The adjustment type: round, floor or ceil. round is set as default.
+
+### decimalAdjust(type, value, exp)
+Decimal adjustment of a number.
+Original implementation from Mozilla Developer Network: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
+* type: The adjustment type: round, floor or ceil
+* value: The number to be adjusted
+* exp: The exponent (the 10 logarithm of the adjustment base). -1 = round to 1 decimal
