@@ -9,7 +9,8 @@
     "web-component",
     "polymer",
     "decimal",
-    "behavior"
+    "behavior",
+    "web-components"
   ],
   "main": "decimal-behavior.html",
   "license": "http://polymer.github.io/LICENSE.txt",
