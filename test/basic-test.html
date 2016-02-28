@@ -1,0 +1,69 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <!-- Step 1: import the element to test -->
+  <link rel="import" href="../decimal-behavior.html">
+  <link rel="import" href="../demo/x-decimal-behavior.html">
+</head>
+
+<body>
+  <!-- You can use the document as a place to set up your fixtures. -->
+  <x-decimal-behavior id="test-element"></x-decimal-behavior>
+  <script>
+  suite('<decimal-behavior>', function() {
+
+    test('formatNumber1', function() {
+      var myEl = document.querySelector('#test-element');
+      assert.isNotNull(myEl);
+      assert.equal(myEl.formatNumber(3.125, 2), '3.13');
+    });
+    test('formatNumber2', function() {
+      var myEl = document.querySelector('#test-element');
+      assert.isNotNull(myEl);
+      assert.equal(myEl.formatNumber(3.1415, 3, 'floor'), '3.141');
+    });
+    test('formatNumber3', function() {
+      var myEl = document.querySelector('#test-element');
+      assert.isNotNull(myEl);
+      assert.equal(myEl.formatNumber(3.14151, 4, 'ceil'), '3.1416');
+    });
+    test('formatNumber4', function() {
+      var myEl = document.querySelector('#test-element');
+      assert.isNotNull(myEl);
+      assert.equal(myEl.formatNumber(null, 2), '');
+    });
+    test('round', function() {
+      var myEl = document.querySelector('#test-element');
+      assert.isNotNull(myEl);
+      assert.equal(myEl.round(3.14151, -1), 3.1);
+    });
+    test('ceil', function() {
+      var myEl = document.querySelector('#test-element');
+      assert.isNotNull(myEl);
+      assert.equal(myEl.ceil(3.14151, -1), 3.2);
+    });
+    test('floor', function() {
+      var myEl = document.querySelector('#test-element');
+      assert.isNotNull(myEl);
+      assert.equal(myEl.floor(3.14151, -3), 3.141);
+    });
+
+  });
+  </script>
+</body>
+
+</html>

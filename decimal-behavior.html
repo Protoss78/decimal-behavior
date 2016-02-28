@@ -1,0 +1,104 @@
+<link rel="import" href="../polymer/polymer.html">
+<!--
+A decimal-behavior element that provides ceil, round, floor and format methods.
+Example:
+    <link rel="import" href="../decimal-behavior.html">
+    <dom-module id="x-decimal-behavior">
+      <template>
+        <style>
+          :host {
+            display: inline-block;
+          }
+        </style>
+        <h1>decimal-behavior</h1>
+        <div><pre>formatNumber(3.125, 2)            : [[formatNumber(3.125, 2)]]</pre></div>
+        <div><pre>formatNumber(3.1415, 3, 'floor')  : [[formatNumber(3.1415, 3, 'floor')]]</pre></div>
+        <div><pre>formatNumber(3.14151, 4, 'ceil')  : [[formatNumber(3.14151, 4, 'ceil')]]</pre></div>
+      </template>
+      <script>
+        Polymer({
+          is: 'x-decimal-behavior',
+          behaviors: [DecimalBehavior]
+        });
+      </script>
+    </dom-module>
+@element decimal-behavior
+@demo demo/index.html
+@hero hero.svg
+-->
+<script>
+DecimalBehavior = {
+  /**
+   * Adjusts and formats the passed value to the specified number of decimals using the passed adjustment type. 
+   * The toFixed function is used to  cut off the String representation.
+   * @param {Number}  value The number.
+   * @param {Integer} decimals   The number of decimals.
+   * @param {String} type round, floor or ceil adjustment type. round is set as default.
+   * @returns {String} The adjusted and formatted String representation of the passed value.
+   */
+  formatNumber: function(value, decimals, type) {
+    if (!value) {
+      return '';
+    }
+    if (!type) {
+      type = 'round';
+    }
+    var roundedValue = this.decimalAdjust(type, value, decimals * -1);
+    return roundedValue.toFixed(decimals);
+  },
+  /**
+   * Decimal adjustment of a number using the round method.
+   * @param {Number}  value The number.
+   * @param {Integer} exp   The exponent (the 10 logarithm of the adjustment base).
+   * @returns {Number} The adjusted value.
+   */
+  round: function(value, exp) {
+    return this.decimalAdjust('round', value, exp);
+  },
+  /**
+   * Decimal adjustment of a number using the floor method.
+   * @param {Number}  value The number.
+   * @param {Integer} exp   The exponent (the 10 logarithm of the adjustment base).
+   * @returns {Number} The adjusted value.
+   */
+  floor: function(value, exp) {
+    return this.decimalAdjust('floor', value, exp);
+  },
+  /**
+   * Decimal adjustment of a number using the ceil method.
+   * @param {Number}  value The number.
+   * @param {Integer} exp   The exponent (the 10 logarithm of the adjustment base).
+   * @returns {Number} The adjusted value.
+   */
+  ceil: function(value, exp) {
+    return this.decimalAdjust('ceil', value, exp);
+  },
+  /**
+   * Decimal adjustment of a number.
+   * Copyright by Mozilla Developer Network: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
+   *
+   * @param {String}  type  The type of adjustment.
+   * @param {Number}  value The number.
+   * @param {Integer} exp   The exponent (the 10 logarithm of the adjustment base).
+   * @returns {Number} The adjusted value.
+   */
+  decimalAdjust: function(type, value, exp) {
+    // If the exp is undefined or zero...
+    if (typeof exp === 'undefined' || +exp === 0) {
+      return Math[type](value);
+    }
+    value = +value;
+    exp = +exp;
+    // If the value is not a number or the exp is not an integer...
+    if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+      return NaN;
+    }
+    // Shift
+    value = value.toString().split('e');
+    value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+    // Shift back
+    value = value.toString().split('e');
+    return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+  }
+};
+</script>

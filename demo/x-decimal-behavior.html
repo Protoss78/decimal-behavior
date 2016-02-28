@@ -1,0 +1,23 @@
+<!--
+Just a demo element
+-->
+<link rel="import" href="../decimal-behavior.html">
+<dom-module id="x-decimal-behavior">
+	<template>
+		<style>
+			:host {
+				display: inline-block;
+			}
+		</style>
+		<h1>decimal-behavior</h1>
+		<div><pre>formatNumber(3.125, 2)            : [[formatNumber(3.125, 2)]]</pre></div>
+		<div><pre>formatNumber(3.1415, 3, 'floor')  : [[formatNumber(3.1415, 3, 'floor')]]</pre></div>
+		<div><pre>formatNumber(3.14151, 4, 'ceil')  : [[formatNumber(3.14151, 4, 'ceil')]]</pre></div>
+	</template>
+	<script>
+		Polymer({
+			is: 'x-decimal-behavior',
+			behaviors: [DecimalBehavior]
+		});
+	</script>
+</dom-module>
