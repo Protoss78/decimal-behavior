@@ -28,9 +28,9 @@ Inlude the behavior in your web component
           }
         </style>
         <h1>decimal-behavior</h1>
-        <div>[[formatNumber(3.125, 2)]]</div>
-        <div>[[formatNumber(3.1415, 3, 'floor')]]</div>
-        <div>[[formatNumber(3.14151, 4, 'ceil')]]</div>
+        <div>[[formatNumber(3.125, 2)]]</div>            // Result: 3.13
+        <div>[[formatNumber(3.1415, 3, 'floor')]]</div>  // Result: 3.141
+        <div>[[formatNumber(3.14151, 4, 'ceil')]]</div>  // Result: 3.1416
       </template>
       <script>
         Polymer({
