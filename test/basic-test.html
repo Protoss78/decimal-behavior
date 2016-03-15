@@ -26,6 +26,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
   suite('<decimal-behavior>', function() {
 
+    test('formatNumber0', function() {
+      var myEl = document.querySelector('#test-element');
+      assert.isNotNull(myEl);
+      assert.equal(myEl.formatNumber(0.0, 2), '0.00');
+    });
     test('formatNumber1', function() {
       var myEl = document.querySelector('#test-element');
       assert.isNotNull(myEl);
