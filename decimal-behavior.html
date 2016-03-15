@@ -37,7 +37,7 @@ DecimalBehavior = {
    * @returns {String} The adjusted and formatted String representation of the passed value.
    */
   formatNumber: function(value, decimals, type) {
-    if (!value) {
+    if (value === null || value === undefined) {
       return '';
     }
     if (!type) {
