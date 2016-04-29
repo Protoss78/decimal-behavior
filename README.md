@@ -3,6 +3,7 @@
 A decimal-behavior element that provides ceil, round, floor, format and decimalAdjustemnt methods. 
 Decimal adjustment of a number implementation is taken from Mozilla Developer Network: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round.
 
+API documentation and live demo can be found on the <a href="http://protoss78.github.io/decimal-behavior">component page</a>
 
 ## Installation
 Install using bower
