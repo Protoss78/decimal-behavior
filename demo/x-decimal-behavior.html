@@ -1,23 +1,41 @@
 <!--
 Just a demo element
 -->
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../paper-input/paper-input.html">
+<link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../decimal-behavior.html">
 <dom-module id="x-decimal-behavior">
-	<template>
-		<style>
-			:host {
-				display: inline-block;
-			}
-		</style>
-		<h1>decimal-behavior</h1>
-		<div><pre>formatNumber(3.125, 2)            : [[formatNumber(3.125, 2)]]</pre></div>
-		<div><pre>formatNumber(3.1415, 3, 'floor')  : [[formatNumber(3.1415, 3, 'floor')]]</pre></div>
-		<div><pre>formatNumber(3.14151, 4, 'ceil')  : [[formatNumber(3.14151, 4, 'ceil')]]</pre></div>
-	</template>
-	<script>
-		Polymer({
-			is: 'x-decimal-behavior',
-			behaviors: [DecimalBehavior]
-		});
-	</script>
+  <template>
+    <style>
+    :host {
+      display: inline-block;
+    }
+    </style>
+    <paper-card heading="Decimal Behavior Demo" image="" elevation="1" animated-shadow="false">
+      <div class="card-content">
+        <paper-input label="Enter a decimal value" value="{{decimalNumber}}"></paper-input>
+
+        <div>round, 2: [[formatNumber(decimalNumber, 2)]]</div>
+        <div>floor, 3: [[formatNumber(decimalNumber, 3, 'floor')]]</div>
+        <div>ceil, 4: [[formatNumber(decimalNumber, 4, 'ceil')]]</div>
+      </div>
+    </paper-card>
+  </template>
+  <script>
+  Polymer({
+    is: 'x-decimal-behavior',
+    behaviors: [DecimalBehavior],
+    properties: {
+      decimalNumber: {
+        type: Number,
+        value: Math.PI
+      }
+    },
+    attached: function() {
+      console.log('attached');
+      this.text1 = this.formatNumber(Math.PI, 2);
+    }
+  });
+  </script>
 </dom-module>

@@ -1,6 +1,6 @@
 {
   "name": "decimal-behavior",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "authors": [
     "Roman Kaufmann <roman.kaufmann.at@gmail.com>"
   ],
@@ -9,8 +9,7 @@
     "web-component",
     "polymer",
     "decimal",
-    "behavior",
-    "web-components"
+    "behavior"
   ],
   "main": "decimal-behavior.html",
   "license": "http://polymer.github.io/LICENSE.txt",
@@ -24,6 +23,8 @@
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "web-component-tester": "^4.0.0"
+    "web-component-tester": "^4.0.0",
+    "paper-input": "PolymerElements/paper-input#^1.1.11",
+    "paper-card": "PolymerElements/paper-card#^1.1.1"
   }
 }

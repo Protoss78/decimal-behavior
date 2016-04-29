@@ -1,32 +1,13 @@
 <link rel="import" href="../polymer/polymer.html">
-<!--
-A decimal-behavior element that provides ceil, round, floor, format and decimalAdjustemnt methods. Decimal adjustment of a number implementation is taken from Mozilla Developer Network: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round.
-Example:
-    <link rel="import" href="../decimal-behavior.html">
-    <dom-module id="x-decimal-behavior">
-      <template>
-        <style>
-          :host {
-            display: inline-block;
-          }
-        </style>
-        <h1>decimal-behavior</h1>
-        <div><pre>formatNumber(3.125, 2)            : [[formatNumber(3.125, 2)]]</pre></div>
-        <div><pre>formatNumber(3.1415, 3, 'floor')  : [[formatNumber(3.1415, 3, 'floor')]]</pre></div>
-        <div><pre>formatNumber(3.14151, 4, 'ceil')  : [[formatNumber(3.14151, 4, 'ceil')]]</pre></div>
-      </template>
-      <script>
-        Polymer({
-          is: 'x-decimal-behavior',
-          behaviors: [DecimalBehavior]
-        });
-      </script>
-    </dom-module>
-@element decimal-behavior
-@demo demo/index.html
-@hero hero.svg
--->
 <script>
+/**
+   A decimal-behavior element that provides ceil, round, floor, format and decimalAdjustemnt methods. 
+   Decimal adjustment of a number implementation is taken from Mozilla Developer Network: 
+   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round.
+
+  @demo demo/index.html
+  @polymerBehavior DecimalBehavior
+  */
 DecimalBehavior = {
   /**
    * Adjusts and formats the passed value to the specified number of decimals using the passed adjustment type. 
