@@ -3,22 +3,39 @@ Just a demo element
 -->
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../paper-input/paper-input.html">
+<link rel="import" href="../../paper-card/paper-card.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../decimal-behavior.html">
 <dom-module id="x-decimal-behavior">
   <template>
     <style>
-    :host {
-      display: inline-block;
+    .line {
+      @apply(--layout-horizontal);
+    }
+    
+    .cell {
+      @apply(--layout-flex);
+    }
+
+    paper-card {
+      width: 30em;
     }
     </style>
     <paper-card heading="Decimal Behavior Demo" image="" elevation="1" animated-shadow="false">
       <div class="card-content">
         <paper-input label="Enter a decimal value" value="{{decimalNumber}}"></paper-input>
-
-        <div>round, 2: [[formatNumber(decimalNumber, 2)]]</div>
-        <div>floor, 3: [[formatNumber(decimalNumber, 3, 'floor')]]</div>
-        <div>ceil, 4: [[formatNumber(decimalNumber, 4, 'ceil')]]</div>
+        <div class="line">
+          <div class="cell">formatNumber(decimalNumber, 3):</div>
+          <div>[[formatNumber(decimalNumber, 3)]]</div>
+        </div>
+        <div class="line">
+          <div class="cell">formatNumber(decimalNumber, 3, 'floor'):</div>
+          <div>[[formatNumber(decimalNumber, 3, 'floor')]]</div>
+        </div>
+        <div class="line">
+          <div class="cell">formatNumber(decimalNumber, 3, 'ceil'):</div>
+          <div>[[formatNumber(decimalNumber, 3, 'ceil')]]</div>
+        </div>
       </div>
     </paper-card>
   </template>
@@ -29,7 +46,7 @@ Just a demo element
     properties: {
       decimalNumber: {
         type: Number,
-        value: Math.PI
+        value: 3.1415
       }
     },
     attached: function() {
