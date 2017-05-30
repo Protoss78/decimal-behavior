@@ -1,3 +1,5 @@
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Protoss78/decimal-behavior)
+
 # decimal-behavior
 
 A decimal-behavior element that provides ceil, round, floor, format and decimalAdjustemnt methods. 
@@ -19,27 +21,39 @@ Inlude the behavior in your web component
     behaviors: [DecimalBehavior]
 
 ## Example
-
-    <link rel="import" href="../decimal-behavior.html">
-    <dom-module id="x-decimal-behavior">
-      <template>
-        <style>
-          :host {
-            display: inline-block;
-          }
-        </style>
-        <h1>decimal-behavior</h1>
-        <div>[[formatNumber(3.125, 2)]]</div>            // Result: 3.13
-        <div>[[formatNumber(3.1415, 3, 'floor')]]</div>  // Result: 3.141
-        <div>[[formatNumber(3.14151, 4, 'ceil')]]</div>  // Result: 3.1416
-      </template>
-      <script>
-        Polymer({
-          is: 'x-decimal-behavior',
-          behaviors: [DecimalBehavior]
-        });
-      </script>
-    </dom-module>
+<!---
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="decimal-behavior.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<dom-module id="x-decimal-behavior">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+      }
+    </style>
+    <h1>decimal-behavior</h1>
+    <div>round: [[formatNumber(3.125, 2)]]</div>            
+    <div>floor: [[formatNumber(3.1415, 3, 'floor')]]</div>  
+    <div>ceil : [[formatNumber(3.14151, 4, 'ceil')]]</div>
+  </template>
+  <script>
+    Polymer({
+      is: 'x-decimal-behavior',
+      behaviors: [DecimalBehavior]
+    });
+  </script>
+</dom-module>
+<x-decimal-behavior></x-decimal-behavior>
+```
 
 ## Methods
 ### round(value, exp)
